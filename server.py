@@ -1,5 +1,6 @@
 import time
 import requests
+from pprint import pprint
 
 from flask import Flask, render_template, request, jsonify
 
@@ -15,10 +16,11 @@ def home():
         # api call
         now = time.ctime(int(time.time()))
         response = requests.get(URL.format(search_term))
-        embed_url = response.json().get("data")[0].get("embed_url")
+        pprint(response.json().get("data")[0])
+        src_url = response.json().get("data")[0].get("images").get("fixed_width").get("url")
         # print("Time: {0} / Used Cache: {1}".format(now, response.from_cache))
         # return json
-        return jsonify(embed_url)
+        return jsonify(src_url)
     return render_template('index.html')
 
 
