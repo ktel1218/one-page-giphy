@@ -4,7 +4,7 @@ One page app that returns a giphy search result
 # Setup
 ```
 virtualenv env
-source env/bin/install
+source env/bin/activate
 pip install -r requirements.txt
 python server.py
 ```
